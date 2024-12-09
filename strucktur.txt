@@ -1,0 +1,9 @@
+Frontend: index.html
+Backend:
+    VM Aufsetzen: buchung.php
+    Erfolg berechnen: bericht.php
+
+
+Komunikationsschnittstelle:
+    VM buchung(index.html -> buchung.php): post(id in buchungID.txt)
+    buchung liste: buchung.php -> buchungen.txt
