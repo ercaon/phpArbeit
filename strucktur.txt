@@ -1,5 +1,4 @@
 Frontend: index.html
-    style.css
 Backend:
     VM Aufsetzen: buchung.php
     Erfolg berechnen: bericht.php
