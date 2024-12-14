@@ -6,13 +6,47 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<form>
-    <p>Gewünschte Anzahl CPU Cores:</p>
-    <input type="radio" name="cores" value="1core" checked>1 Core<br>
-    <input type="radio" name="cores" value="2core">2 Cores<br>
-    <input type="radio" name="cores" value="4core">4 Cores<br>
-    <input type="radio" name="cores" value="8core">8 Cores<br>
-    <input type="radio" name="cores" value="16core">16 Cores<br>
-</form>
+<div class="wrapper">
+    <div class="cores">
+        <form>
+            <div class="form-header">Gewünschte Anzahl CPU Cores:<br></div>
+            <input type="radio" name="cores" value="1core" checked>1 Core<br>
+            <input type="radio" name="cores" value="2core">2 Cores<br>
+            <input type="radio" name="cores" value="4core">4 Cores<br>
+            <input type="radio" name="cores" value="8core">8 Cores<br>
+            <input type="radio" name="cores" value="16core">16 Cores
+        </form>
+    </div>
+</div>
+<br>
+<div class="wrapper">
+    <div class="ram">
+        <form>
+            <div class="form-header">Gewünschte Menge Arbeitsspeicher:<br></div>
+            <input type="radio" name="ram" value="512mb" checked>512 MB<br>
+            <input type="radio" name="ram" value="1024mb">1 GB<br>
+            <input type="radio" name="ram" value="2048mb">2 GB<br>
+            <input type="radio" name="ram" value="4096mb">4 GB<br>
+            <input type="radio" name="ram" value="8192mb">8 GB<br>
+            <input type="radio" name="ram" value="16384mb">16 GB<br>
+            <input type="radio" name="ram" value="32768mb">32 GB
+        </form>
+    </div>
+</div>
+<br>
+<div class="wrapper">
+    <div class="ssd">
+        <form>
+            <div class="form-header">Gewünschte Speichergrösse:<br></div>
+            <input type="radio" name="ssd" value="10gb" checked>10 GB<br>
+            <input type="radio" name="ssd" value="20gb">20 GB<br>
+            <input type="radio" name="ssd" value="40gb">40 GB<br>
+            <input type="radio" name="ssd" value="80gb">80 GB<br>
+            <input type="radio" name="ssd" value="240gb">240 GB<br>
+            <input type="radio" name="ssd" value="500gb">500 GB<br>
+            <input type="radio" name="ssd" value="1000gb">1 TB
+        </form>
+    </div>
+</div>
 </body>
 </html>
