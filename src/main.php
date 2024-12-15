@@ -3,6 +3,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // init var and const
+        $server_resources_json = file_get_contents('../data/servers.json');
+        $server_resources = json_decode($server_resources_json, true);
+
         $totalPrice = 0;
 
         $coresPrice = [
@@ -33,6 +36,11 @@
             '1000' => 500
         ];
 
+        // check if free resources
+
+        if ()
+
+        // math money
         if (isset($_POST['cores']) && isset($coresPrice[$_POST['cores']])) {
 
         }
