@@ -1,7 +1,9 @@
 <?php
 // Initialize variables for total price and form data
 $totalPrice = 0;
-$cores = $ram = $ssd = null;
+$cores = null;
+$ram = null;
+$ssd = null;
 
 // Check if form data is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
