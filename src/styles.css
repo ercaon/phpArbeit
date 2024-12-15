@@ -1,0 +1,137 @@
+body {
+    width: 100%;
+    height: 100%;
+    --s: 3rem; /* control the size */
+  
+    --c: #0000, #282828 0.5deg 119.5deg, #00000000 120deg;
+    --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+    --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+    --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+    background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+      var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+      var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
+    background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title_omni {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifa;
+    text-align: center;
+    color: #e65229;
+    font-size: 10rem !important;
+    float: left !important;
+    font-weight: bold;
+    margin-left: 25rem;
+}
+
+.title_cloud {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifa;
+    color: #ffffff;
+    font-size: 10rem !important;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/* Style for radio buttons */
+.radio_vm {
+  display: none; /* Hide the default radio button */
+}
+
+/* Style for labels */
+.radio_vm + label {
+  font-size: 2rem; /* Font size */
+  padding: 0.5rem 1rem; /* Padding for label */
+  border:  #e65229 solid 0.1rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: #202020; /* Orange background */
+  cursor: pointer; /* Pointer on hover */
+  margin-bottom: 0.5rem; /* Space between options */
+  display: inline-block; /* Inline block for label */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  width: 25rem;
+  height: 2.5rem;
+  text-align: center;
+  color: #e65229;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-left: 39rem;
+}
+
+/* Hover effect for labels */
+.radio_vm + label:hover {
+  background-color: #1c1c1c; /* Darker background on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Active state for label */
+.radio_vm:checked + label {
+  background-color: #e65229; /* Green background when selected */
+  color: white; /* White text when selected */
+}
+
+/* Focus effect for accessibility */
+.radio_vm:focus + label {
+  outline: 2px solid #007bff; /* Blue outline when focused */
+}
+
+
+/* Style for the submit button */
+button[type="submit"] {
+  background-color: #232323; /* Grey background */
+  color: white; /* White text */
+  padding: 1rem 2rem; /* Vertical and horizontal padding */
+  font-size: 1.2rem; /* Font size */
+  border: none; /* Remove border */
+  border-radius: 0.5rem; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-left: 49rem;
+}
+
+/* Hover effect for the submit button */
+button[type="submit"]:hover {
+  background-color: #1e1e1e; /* Darker grey on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.radio_vm_text {
+  font-size: 2rem;
+  color: #e65229;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  margin: 2rem;
+}
+
+.Total_Price_Txt {
+  font-size: 5rem;
+  width: 40rem;
+  color: #e65229;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  border: #e65229 solid 0.5rem;
+  margin-left: 30rem;
+  margin-bottom: 5rem;
+}
+
+.buy_button {
+  background-color: #232323; /* Grey background */
+  color: white; /* White text */
+  padding: 1rem 2rem; /* Vertical and horizontal padding */
+  font-size: 1.2rem; /* Font size */
+  border: none; /* Remove border */
+  border-radius: 0.5rem; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-decoration: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 20rem;
+  margin-left: 43rem; /* Center it and add top margin */
+  margin-top: 24rem;
+}
