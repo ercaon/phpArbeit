@@ -3,8 +3,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // init var and const
-        $server_resources_json = file_get_contents('../data/servers.json');
-        $server_resources = json_decode($server_resources_json, true);
+        $server_resources = json_decode(file_get_contents('../data/servers.json'), true);
+        $cores_needed = $_POST['cores'];
+        $ram_needed = $_POST['ram'];
+        $ssd_needed = $_POST['ssd'];
+        $email = $_POST['email'];
 
         $totalPrice = 0;
 
@@ -37,12 +40,28 @@
         ];
 
         // check if free resources
+        function check_resources($requested_cpu, $requested_ram, $requested_ssd, $available_server) {
+            $best_server = null;
 
-        if ()
+            foreach ($available_server as $server) {
+                if ($server['available_cpu'] >= $requested_cpu &&
+                    $server['available_ram'] >= $requested_ram &&
+                    $server['available_ssd'] >= $requested_ssd){
+                        // check for smalles available server
+                        if ($best_server === null || $server['id'] < $best_server['id']) {
+                            $best_server = $server;
+                        }
+                }
+            }
+            return $best_server ? $best_server['id'] : null;
+        }
+
+        $result = check_resources($requested_cpu, $requested_ram, $requested_ssd, $available_server);
+        echo "<p>$result</p>";
 
         // math money
         if (isset($_POST['cores']) && isset($coresPrice[$_POST['cores']])) {
-
+            $totalPrice += $coresPrice[$_POST['core']];
         }
 
         // Preis für RAM berechnen
