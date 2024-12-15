@@ -11,7 +11,7 @@
         <form method="post" action="main.php">
             <h1 class="radio_vm_text"> How Many Cores do you want? </h1>
 
-            <input type="radio" class="radio_vm" id="1" name="cores" value="1" required <?php if ($cores == '1') echo 'checked'; ?>>
+            <input type="radio" class="radio_vm" id="1" name="cores" value="1" required> <?php if ($cores == '1') echo 'checked'; ?>
             <label for="1">1 Core (+5 CHF)</label><br>
 
             <input type="radio" class="radio_vm" id="2" name="cores" value="2" required <?php if ($cores == '2') echo 'checked'; ?>>
