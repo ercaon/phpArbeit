@@ -137,22 +137,25 @@
                     return $best_server ? $best_server['id'] : null;
                 }
 
-                $result = check_resources($requested_cpu, $requested_ram, $requested_ssd, $available_server);
-                echo $result;
-
+                $result = check_resources($cores_needed, $ram_needed, $ssd_needed, $server_resources);
+                if ($result) {
+                    echo "<p>$result</p>";
+                } else {
+                    echo "<p>Keine passenden Server gefunden.</p>";
+                }
                 // math money
                 if (isset($_POST['cores']) && isset($coresPrice[$_POST['cores']])) {
-
+                    $totalPrice += $coresPrice[$_POST['core']];
                 }
 
                 // Preis für RAM berechnen
                 if (isset($_POST['ram']) && isset($ramPrice[$_POST['ram']])) {
-                $totalPrice += $ramPrice[$_POST['ram']];
+                    $totalPrice += $ramPrice[$_POST['ram']];
                 }
 
                 // Preis für SSD berechnen
                 if (isset($_POST['ssd']) && isset($ssdPrice[$_POST['ssd']])) {
-                $totalPrice += $ssdPrice[$_POST['ssd']];
+                    $totalPrice += $ssdPrice[$_POST['ssd']];
                 }
             }
         ?>

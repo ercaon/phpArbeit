@@ -56,9 +56,12 @@
             return $best_server ? $best_server['id'] : null;
         }
 
-        $result = check_resources($requested_cpu, $requested_ram, $requested_ssd, $available_server);
-        echo "<p>$result</p>";
-
+        $result = check_resources($cores_needed, $ram_needed, $ssd_needed, $server_resources);
+        if ($result) {
+            echo "<p>$result</p>";
+        } else {
+            echo "<p>Keine passenden Server gefunden.</p>";
+        }
         // math money
         if (isset($_POST['cores']) && isset($coresPrice[$_POST['cores']])) {
             $totalPrice += $coresPrice[$_POST['core']];
