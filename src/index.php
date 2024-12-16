@@ -9,7 +9,7 @@
         <div class="title_omni"> Omni </div><div class="title_cloud"> Cloud </div>
 
         <form method="post" action="">
-            <input type="text" class="email_text" id="email" name="emailText" required>
+            <input type="text" class="email" id="email" name="email" required>
             <label for="email">Email</label>
 
             <h1 class="radio_vm_text"> How Many Cores do you want? </h1>
@@ -143,8 +143,9 @@
                 }
 
                 $result = check_resources($cores_needed, $ram_needed, $ssd_needed, $server_resources);
+                // !! FRONTEND ANPASSUNGEN NÖTIG
                 if ($result) {
-                    echo "<p>$result</p>";
+                    echo "<p>Server stehen zur verfügung, es würde:</p>";
                 } else {
                     echo "<p>Keine passenden Server gefunden.</p>";
                 }
@@ -163,7 +164,15 @@
                 if (isset($_POST['ssd']) && isset($ssdPrice[$_POST['ssd']])) {
                     $totalPrice += $ssdPrice[$_POST['ssd']];
                 }
+
+                // !! FRONTEND ANPASSUNGEN NÖTIG
+                echo "<p>$totalPrice CHF kosten.</p>";
             }
         ?>
+
+        <form>
+            <input type="button" class="book" id="book" name="book">
+            <label for="book">Kaufen</label>
+        </form>
     </body>
 </html>
