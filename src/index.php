@@ -135,6 +135,7 @@
                     function check_resources($requested_cpu, $requested_ram, $requested_ssd, $available_server)
                     {
                         $best_server = null;
+                        print_r($available_server);
 
                         foreach ($available_server as $server) {
                             if (
@@ -170,7 +171,7 @@
                         setcookie('ssd_needed', $ssd_needed, time() + 3600, '/');
                         setcookie('email', $email, time() + 3600, '/');
                         setcookie('totalPrice', $totalPrice, time() + 3600, '/');
-                    setcookie('server', $result, time() + 3600, '/');
+                        setcookie('server', $result, time() + 3600, '/');
 
                         // !! FRONTEND ANPASSUNGEN NÖTIG
                         echo "<p>$totalPrice CHF kosten.</p>";
@@ -192,7 +193,7 @@
                         echo "<p>Fehler beim Laden der Serverdatenbank.</p>";
                         exit;
                     }
-                    
+
                     foreach ($server_resources as &$server) {
                         if ($server['id'] == $result) {
                             if (
@@ -207,6 +208,32 @@
                                 // Datei aktualisieren
                                 if (file_put_contents('../data/servers.json', json_encode($server_resources, JSON_PRETTY_PRINT))) {
                                     echo "<p>Server erfolgreich gebucht. Ihre Buchung kostet $totalPrice CHF.</p>";
+
+                                    $vms_file = '../data/vms.json';
+                                    $vms_data = file_exists($vms_file) ? json_decode(file_get_contents($vms_file), true) : [];
+                
+                                    if ($vms_data === null) {
+                                        echo "<p>Fehler beim Laden der VM-Datenbank.</p>";
+                                        exit;
+                                    }
+
+                                    $vm_entry = [
+                                        'email' => $email,
+                                        'server_id' => $result,
+                                        'cores_used' => $cores_needed,
+                                        'ram_used' => $ram_needed,
+                                        'ssd_used' => $ssd_needed,
+                                        'total_price' => $totalPrice
+                                    ];
+
+                                    $vms_data[] = $vm_entry;
+                
+                                    // write protokol
+                                    if (file_put_contents($vms_file, json_encode($vms_data, JSON_PRETTY_PRINT))) {
+                                        echo "<p>Buchung wurde erfolgreich protokolliert.</p>";
+                                    } else {
+                                        echo "<p>Fehler beim Protokollieren.</p>";
+                                    }
                                 } else {
                                     echo "<p>Fehler beim Speichern der Daten.</p>";
                                 }

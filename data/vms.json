@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "email": "test",
+        "server_id": "1",
+        "cores_used": "1",
+        "ram_used": "512",
+        "ssd_used": "10",
+        "total_price": "15"
+    }
+]

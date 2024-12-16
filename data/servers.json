@@ -1,23 +1,23 @@
 [
-  {
-    "id": 1,
-    "total_cpu": 4,
-    "total_ram": 32768,
-    "total_ssd": 4000,
-    "available_cpu": 4,
-    "available_ram": 32768,
-    "available_ssd": 4000
-  },
-  {
-    "id": 2,
-    "total_cpu": 8,
-    "total_ram": 65536,
-    "total_ssd": 8000,
-    "available_cpu": 8,
-    "available_ram": 65536,
-    "available_ssd": 8000
-  },
-  {
+    {
+        "id": 1,
+        "total_cpu": 4,
+        "total_ram": 32768,
+        "total_ssd": 4000,
+        "available_cpu": 3,
+        "available_ram": 32256,
+        "available_ssd": 3990
+    },
+    {
+        "id": 2,
+        "total_cpu": 8,
+        "total_ram": 65536,
+        "total_ssd": 8000,
+        "available_cpu": 8,
+        "available_ram": 65536,
+        "available_ssd": 8000
+    },
+    {
         "id": 1,
         "total_cpu": 16,
         "total_ram": 131072,
@@ -25,5 +25,5 @@
         "available_cpu": 16,
         "available_ram": 131072,
         "available_ssd": 16000
-  }
+    }
 ]
