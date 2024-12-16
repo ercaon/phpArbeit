@@ -93,6 +93,7 @@
 
                     if ($server_resources === null) {
                         echo "<p>Fehler beim Laden der Serverdatenbank.</p>";
+                        exit;
                     }
 
                     $cores_needed = $_POST['cores'];
@@ -169,6 +170,7 @@
                         setcookie('ssd_needed', $ssd_needed, time() + 3600, '/');
                         setcookie('email', $email, time() + 3600, '/');
                         setcookie('totalPrice', $totalPrice, time() + 3600, '/');
+                    setcookie('server', $result, time() + 3600, '/');
 
                         // !! FRONTEND ANPASSUNGEN NÖTIG
                         echo "<p>$totalPrice CHF kosten.</p>";
@@ -182,7 +184,38 @@
                     $ssd_needed = $_COOKIE['ssd_needed'];
                     $email = $_COOKIE['email'];
                     $totalPrice = $_COOKIE['totalPrice'];
+                    $result = $_COOKIE['server'];
                     
+                    $server_resources = json_decode(file_get_contents('../data/servers.json'), true);
+
+                    if ($server_resources === null) {
+                        echo "<p>Fehler beim Laden der Serverdatenbank.</p>";
+                        exit;
+                    }
+                    
+                    foreach ($server_resources as &$server) {
+                        if ($server['id'] == $result) {
+                            if (
+                                $server['available_cpu'] >= $cores_needed &&
+                                $server['available_ram'] >= $ram_needed &&
+                                $server['available_ssd'] >= $ssd_needed
+                            ) {
+                                $server['available_cpu'] -= $cores_needed;
+                                $server['available_ram'] -= $ram_needed;
+                                $server['available_ssd'] -= $ssd_needed;
+                
+                                // Datei aktualisieren
+                                if (file_put_contents('../data/servers.json', json_encode($server_resources, JSON_PRETTY_PRINT))) {
+                                    echo "<p>Server erfolgreich gebucht. Ihre Buchung kostet $totalPrice CHF.</p>";
+                                } else {
+                                    echo "<p>Fehler beim Speichern der Daten.</p>";
+                                }
+                            } else {
+                                echo "<p>Der Server hat nicht genügend Ressourcen für die Buchung.</p>";
+                            }
+                            break; // Server gefunden und verarbeitet, Schleife verlassen
+                        }
+                    }
                 }
             }
         ?>
