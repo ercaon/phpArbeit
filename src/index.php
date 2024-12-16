@@ -85,6 +85,11 @@
 
                 // init var and const
                 $server_resources = json_decode(file_get_contents('../data/servers.json'), true);
+
+                if ($server_resources === null) {
+                    echo "<p>Fehler beim Laden der Serverdatenbank.</p>";
+                }
+
                 $cores_needed = $_POST['cores'];
                 $ram_needed = $_POST['ram'];
                 $ssd_needed = $_POST['ssd'];
@@ -143,9 +148,10 @@
                 } else {
                     echo "<p>Keine passenden Server gefunden.</p>";
                 }
-                // math money
+
+                // money math
                 if (isset($_POST['cores']) && isset($coresPrice[$_POST['cores']])) {
-                    $totalPrice += $coresPrice[$_POST['core']];
+                    $totalPrice += $coresPrice[$_POST['cores']];
                 }
 
                 // Preis für RAM berechnen
